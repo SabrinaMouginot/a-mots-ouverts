@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 
+import articleRoutes from "./routes/articles.js";
+
 // Chargement des variables d'environnement
 dotenv.config();
 
@@ -24,6 +26,9 @@ mongoose.connect(process.env.MONGO_URI, {
 app.get("/", (req, res) => {
     res.send("Bienvenue sur À mots ouverts !");
 });
+
+// Utilisation des routes pour les articles
+app.use("/api/articles", articleRoutes);
 
 // Démarrage du serveur
 const PORT = process.env.PORT || 5000;
