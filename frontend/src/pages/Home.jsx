@@ -12,13 +12,18 @@ function Home() {
     return (
         <div>
             <h1>À mots ouverts</h1>
-            {articles.map(article => (
-                <div key={article._id}>
-                    <h2>{article.title}</h2>
-                    <p>{article.content}</p>
-                    <hr />
+            <div className="article-container">
+                {articles.map(article => (
+                    <div key={article._id}>
+                        <h2>{article.title}</h2>
+                        <p>{article.content}</p>
+                        <hr />
+                    </div>
+                ))}
+                <div className="reactions">
+                    <span>👍</span> <span>😆</span> <span>😮</span> <span>🤬</span>
                 </div>
-            ))}
+            </div>
         </div>
     );
 }
