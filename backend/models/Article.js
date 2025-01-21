@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
 
 const ArticleSchema = new mongoose.Schema({
-    title: String,
-    content: String,
+    title: { type: String, required: true },
+    subtitle: String,
+    content: { type: String, required: true },
+    image: String,
     date: { type: Date, default: Date.now }
 });
 
