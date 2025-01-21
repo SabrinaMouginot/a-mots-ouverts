@@ -25,4 +25,11 @@ router.put("/:id", authMiddleware, async (req, res) => {
     res.json(updatedArticle);
 });
 
+
+// Supprimer un article (admin uniquement)
+router.delete("/:id", authMiddleware, async (req, res) => {
+    await Article.findByIdAndDelete(req.params.id);
+    res.json({ message: "Article supprimé" });
+});
+
 export default router;
