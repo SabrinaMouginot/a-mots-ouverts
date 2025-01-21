@@ -18,4 +18,11 @@ router.post("/", authMiddleware, async (req, res) => {
     res.json(newArticle);
 });
 
+// Modifier un article (admin uniquement)
+router.put("/:id", authMiddleware, async (req, res) => {
+    const { title, subtitle, content, image } = req.body;
+    const updatedArticle = await Article.findByIdAndUpdate(req.params.id, { title, subtitle, content, image }, { new: true });
+    res.json(updatedArticle);
+});
+
 export default router;
