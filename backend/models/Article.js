@@ -5,7 +5,8 @@ const ArticleSchema = new mongoose.Schema({
     subtitle: String,
     content: { type: String, required: true },
     image: String,
-    date: { type: Date, default: Date.now }
+    date: { type: Date, default: Date.now },
+    reactions: { like: Number, laugh: Number, wow: Number, angry: Number }
 });
 
 export default mongoose.model("Article", ArticleSchema);
