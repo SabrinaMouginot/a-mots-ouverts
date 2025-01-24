@@ -32,4 +32,13 @@ router.delete("/:id", authMiddleware, async (req, res) => {
     res.json({ message: "Article supprimé" });
 });
 
+// Ajouter les réactions
+router.post("/:id/reactions", async (req, res) => {
+    const { type } = req.body; // type = like, laugh, wow, angry
+    const article = await Article.findById(req.params.id);
+    article.reactions[type] = (article.reactions[type] || 0) + 1;
+    await article.save();
+    res.json(article);
+});
+
 export default router;
